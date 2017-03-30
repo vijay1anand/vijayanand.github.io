@@ -1,0 +1,28 @@
+.container-fluid {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.bg-1 { 
+    /*background-color: #1abc9c; */ Green 
+    color: #ffffff;
+}
+.bg-2 { 
+
+    color: cadetblue;
+}
+.bg-3 { 
+    background-color: #ffffff; /* White */
+    color: #555555;
+}
+
+.navbar{
+    background-color: #ffffff;
+    color: cadetblue;
+    font-size: 18px;
+}
+.photo{
+background-color:darkgrey;
+padding-top: 10px;
+padding-bottom: 10px;
+}

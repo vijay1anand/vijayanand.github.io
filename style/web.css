@@ -15,14 +15,18 @@
     background-color: #ffffff; /* White */
     color: #555555;
 }
-
+.bg-4 {
+    color: blue;
+}
 .navbar{
     background-color: #ffffff;
     color: cadetblue;
     font-size: 18px;
 }
-.photo{
+
+.photo {
 background-color:darkgrey;
 padding-top: 10px;
 padding-bottom: 10px;
 }
+

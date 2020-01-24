@@ -1,745 +1,406 @@
 <!DOCTYPE html>
 <html>
   <head>
-        <title>Faqir</title>
-        <link rel="shortcut icon" href="https://www.mashreqbank.com/uae/en/system/designitems/images/favicons/favicon-96x96.png">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style/bootstrap.min.css">  
-          
-     
+    <title>Faqir</title>
+    <link rel="shortcut icon" href="https://www.mashreqbank.com/uae/en/system/designitems/images/favicons/favicon-96x96.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <!--script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script-->
+    <!--script type="text/javascript" src = "style/webchat_speech.js"></script-->
+    <script type="text/javascript" src = "https://cdn.botframework.com/botframework-webchat/4.6.0/webchat.js"></script>
+
     <style>
-        #webchat{
-          position: fixed; 
-          bottom: 0;
-          right:0;
-          top: 10%;
-          width:100%;
-          background-image: url("style/background_m.jpg");
-          
-         }
+      #webchat{
+        position: fixed; 
+        bottom: 0;
+        right:0;
+        top: 10%;
+        width:100%;
+        background-image: url("style/background_m.jpg");    
+      }  
 
-        
-        
-        .navbar-brand{
-            color: #1308b9;
-            font-family: "Century Gothic";
-            font-size: 18px;
-            font-weight: normal;
-            margin-left: -10px;
-        }
+      .navbar-brand{
+        color: #1308b9;
+        font-family: "Century Gothic";
+        font-size: 18px;
+        font-weight: normal;
+        margin-left: -10px;
+      }
 
-        body{
-            
-              font-family: "Century Gothic";
-             
-              
-              /* background-color: rgba(169,169,169, .4); */
-              /* background-image: url("style/background.jpg"); */
-              /* background-position:10% 15%; */
-             
-              /* background-repeat: no-repeat;*/
-              
-       }
-      
-        .logo{
-     
-          margin-right: 0%;
-        }
-        .header{
-         
-          background:rgb(218, 232, 222);
-          height:55px; 
-          font-family: "Century Gothic";
-        }
-        .logo{
-          /* background: #F35333; */
-          
-          margin-right: 0px;
-        }
-        img.header_flex_person{
-          float: left;
-          border-radius: 50%;
-          margin-top: 7px;
-          margin-left: 10px;
-          width: 40px;
-          height: 40px;           
-        }
-        img.company_logo{
-         
-          position: fixed;
-          top: 1%;
-          right:0%;
-          width: 200px;
-          height:40px; 
-          
-        }
-        .swiper-slide {
-              height: 100px;
-        }
+      body{          
+        font-family: "Century Gothic";              
+      }
+
+      .logo{
+        margin-right: 0%;
+      }
+
+      .header{   
+        background:rgb(218, 232, 222);
+        height:55px; 
+        font-family: "Century Gothic";
+      }
+
+      .logo{          
+        margin-right: 0px;
+      }
+
+      img.header_flex_person{
+        float: left;
+        border-radius: 50%;
+        margin-top: 7px;
+        margin-left: 10px;
+        width: 40px;
+        height: 40px;           
+      }
+
+      img.company_logo{
+        position: fixed;
+        top: 1%;
+        right:0%;
+        width: 200px;
+        height:40px;           
+      }
+
+      .swiper-slide {
+        height: 100px;
+      }
     </style>
-        
-        <script>
-          function getParamValue(paramName)
-          {
-              var url = window.location.search.substring(1); //get rid of "?" in querystring
-              var qArray = url.split('&'); //get key-value pairs
-              var elementFind=false;
-              for (var i = 0; i < qArray.length; i++) 
-              {
-                  var pArr = qArray[i].split('='); //split key and value
-                  if (pArr[0] == paramName){ 
-                    elementFind=true;
-                    return pArr[1]; //return value
-                  }
-              }
-              if(!elementFind)
-               return " ";
-          }
-        </script>
-
-  </head>      
- 
-<body>
-   
-    
+  </head>
+  <body>   
     <div class="row header">
       <div class="navbar-header col-md-10 col-sm-10" >
-        <img class="header_flex_person" src="style/flex_person.jpg">
-        <a class="navbar-brand" href="https://www.mashreqbank.com/uae/en/personal/home">Faqir</a>
-      </div>
-         
+        <!--img class="header_flex_person" src="style/flex_person.jpg">
+        <a class="navbar-brand" href="https://www.mashreqbank.com/uae/en/personal/home">Faqir</a--->
+      </div>         
       <div class="logo col-md-2 col-sm-2">
-        <img class="company_logo img-fluid" src="style/Mashreq-Bank-Logo.png"  alt="logo" >
+        <img class="company_logo img-fluid" src="style/logo1.png"  alt="logo">
       </div>
     </div>
- 
- 
-  <div id="webchat" role="main">
     
- </div>
+    <div id="webchat" role="main"></div>
 
-
-
-
-    <script src="style/webchat.js"></script>
-    
     <script>
       // "styleSet" is a set of CSS rules which are generated from "styleOptions"
-    
-      
       const adaptiveCardHostConfig = {
-
         "hostCapabilities": {
-
-                      "capabilities": null
-
+          "capabilities": null
         },
-
         "choiceSetInputValueSeparator": ",",
-
         "supportsInteractivity": true,
-
         "fontTypes": {
-
-               "default": {
-
-                             "fontFamily": "Century Gothic",
-
-                             "fontSizes": {
-
-                                            "small": 12,
-
-                                            "default": 14,
-
-                                            "medium": 17,
-
-                                            "large": 21,
-
-                                            "extraLarge": 26
-
-                             },
-
-                             "fontWeights": {
-
-                                            "lighter": 200,
-
-                                            "default": 400,
-
-                                            "bolder": 600
-
-                             }
-
-               },
-
-               "monospace": {
-
-                             "fontFamily": "'Courier New', Courier, monospace",
-
-                             "fontSizes": {
-
-                                            "small": 12,
-
-                                            "default": 14,
-
-                                            "medium": 17,
-
-                                            "large": 21,
-
-                                            "extraLarge": 26
-
-                             },
-
-                             "fontWeights": {
-
-                                            "lighter": 200,
-
-                                            "default": 400,
-
-                                            "bolder": 600
-
-                             }
-
-               }
-
-},
-
+          "default": {
+            "fontFamily": "Century Gothic",
+            "fontSizes": {
+              "small": 12,
+              "default": 14,
+              "medium": 17,
+              "large": 21,
+              "extraLarge": 26
+            },
+            "fontWeights": {
+              "lighter": 200,
+              "default": 400,
+              "bolder": 600
+            }
+          },
+          "monospace": {
+            "fontFamily": "'Courier New', Courier, monospace",
+            "fontSizes": {
+              "small": 12,
+              "default": 14,
+              "medium": 17,
+              "large": 21,
+              "extraLarge": 26
+            },
+            "fontWeights": {
+              "lighter": 200,
+              "default": 400,
+              "bolder": 600
+            }
+          }
+        },
         "spacing": {
-
-               "small": 3,
-
-               "default": 8,
-
-               "medium": 20,
-
-               "large": 30,
-
-               "extraLarge": 40,
-
-               "padding": 14
-
-},
-
+          "small": 3,
+          "default": 8,
+          "medium": 20,
+          "large": 30,
+          "extraLarge": 40,
+          "padding": 14
+        },
         "separator": {
-
-               "lineThickness": 1,
-
-               "lineColor": "#EEEEEE"
-
-},
-
+          "lineThickness": 1,
+          "lineColor": "#EEEEEE"
+        },
         "imageSizes": {
-
-               "small": 40,
-
-               "medium": 80,
-
-               "large": 160
-
-},
-
+          "small": 40,
+          "medium": 80,
+          "large": 160
+        },
         "containerStyles": {
-
-                      "default": {
-
-                                    "foregroundColors": {
-
-                                                    "default": {
-
-                                                                  "default": "#000000",
-
-                                                                  "subtle": "#767676",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "dark": {
-
-                                                                  "default": "#000000",
-
-                                                                  "subtle": "#66000000",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "light": {
-
-                                                                  "default": "#FFFFFF",
-
-                                                                  "subtle": "#33000000",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "accent": {
-
-                                                                  "default": "#0063B1",
-
-                                                                  "subtle": "#0063B1",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "good": {
-
-                                                                  "default": "#54a254",
-
-                                                                  "subtle": "#DD54a254",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "warning": {
-
-                                                                  "default": "#c3ab23",
-
-                                                                  "subtle": "#DDc3ab23",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "attention": {
-
-                                                                  "default": "#FF0000",
-
-                                                                  "subtle": "#DDFF0000",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    }
-
-                                    },
-
-                                    "backgroundColor": "rgba(214, 214, 194, .9)"
-
-                      },
-
-                      "emphasis": {
-
-                                    "foregroundColors": {
-
-                                                    "default": {
-
-                                                                  "default": "#000000",
-
-                                                                  "subtle": "#767676",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "dark": {
-
-                                                                  "default": "#000000",
-
-                                                                  "subtle": "#66000000",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "light": {
-
-                                                                  "default": "#FFFFFF",
-
-                                                                  "subtle": "#33000000",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "accent": {
-
-                                                                  "default": "#404040",
-
-                                                                  "subtle": "#882E89FC",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "good": {
-
-                                                                  "default": "#54a254",
-
-                                                                  "subtle": "#DD54a254",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "warning": {
-
-                                                                  "default": "#c3ab23",
-
-                                                                  "subtle": "#DDc3ab23",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    },
-
-                                                    "attention": {
-
-                                                                  "default": "#FF0000",
-
-                                                                  "subtle": "#DDFF0000",
-
-                                                                  "highlightColors": {
-
-                                                                                "default": "#22000000",
-
-                                                                                "subtle": "#11000000"
-
-                                                                  }
-
-                                                    }
-
-                                    },
-
-                                    "backgroundColor": "#F0F0FF"
-
-                      }
-
+          "default": {
+            "foregroundColors": {
+              "default": {
+                "default": "#000000",
+                "subtle": "#767676",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "dark": {
+              "default": "#000000",
+              "subtle": "#66000000",
+              "highlightColors": {
+                "default": "#22000000",
+                "subtle": "#11000000"
+              }
+              },
+              "light": {
+                "default": "#FFFFFF",
+                "subtle": "#33000000",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "accent": {
+                "default": "#0063B1",
+                "subtle": "#0063B1",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "good": {
+                "default": "#54a254",
+                "subtle": "#DD54a254",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "warning": {
+                "default": "#c3ab23",
+                "subtle": "#DDc3ab23",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "attention": {
+                "default": "#FF0000",
+                "subtle": "#DDFF0000",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              }
+            },
+            "backgroundColor": "rgba(214, 214, 194, .9)"
+          },
+          "emphasis": {
+            "foregroundColors": {
+              "default": {
+                "default": "#000000",
+                "subtle": "#767676",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "dark": {
+                "default": "#000000",
+                "subtle": "#66000000",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "light": {
+                "default": "#FFFFFF",
+                "subtle": "#33000000",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "accent": {
+                "default": "#404040",
+                "subtle": "#882E89FC",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "good": {
+                "default": "#54a254",
+                "subtle": "#DD54a254",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "warning": {
+                "default": "#c3ab23",
+                "subtle": "#DDc3ab23",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              },
+              "attention": {
+                "default": "#FF0000",
+                "subtle": "#DDFF0000",
+                "highlightColors": {
+                  "default": "#22000000",
+                  "subtle": "#11000000"
+                }
+              }
+            },
+            "backgroundColor": "#F0F0FF"
+          }
         },
-
         "actions": {
-
-                      "maxActions": 100,
-
-                      "spacing": "Default",
-
-                      "buttonSpacing": 8,
-
-                      "showCard": {
-
-                                    "actionMode": "Inline",
-
-                                    "inlineTopMargin": 10,
-
-                                    "style": "emphasis"
-
-                      },
-
-                      "preExpandSingleShowCardAction": false,
-
-                      "actionsOrientation": "Vertical",
-
-                      "actionAlignment": "Stretch"
-
+          "maxActions": 100,
+          "spacing": "Default",
+          "buttonSpacing": 8,
+          "showCard": {
+            "actionMode": "Inline",
+            "inlineTopMargin": 10,
+            "style": "emphasis"
+          },
+          "preExpandSingleShowCardAction": false,
+          "actionsOrientation": "Vertical",
+          "actionAlignment": "Stretch"
         },
-
         "adaptiveCard": {
-
-                      "allowCustomStyle": true
-
+          "allowCustomStyle": true
         },
-
         "imageSet": {
-
-                      "maxImageHeight": 100
-
+          "maxImageHeight": 100
         },
-
         "media": {
-
-                      "allowInlinePlayback": true
-
+          "allowInlinePlayback": true
         },
-
         "factSet": {
-
-                      "title": {
-
-                                    "size": "Default",
-
-                                    "color": "Default",
-
-                                    "isSubtle": false,
-
-                                    "weight": "Bolder",
-
-                                    "wrap": true
-
-                      },
-
-                      "value": {
-
-                                    "size": "Default",
-
-                                    "color": "Default",
-
-                                    "isSubtle": false,
-
-                                    "weight": "Default",
-
-                                    "wrap": true
-
-                      },
-
-                      "spacing": 8
-
+          "title": {
+            "size": "Default",
+            "color": "Default",
+            "isSubtle": false,
+            "weight": "Bolder",
+            "wrap": true
+          },
+          "value": {
+            "size": "Default",
+            "color": "Default",
+            "isSubtle": false,
+            "weight": "Default",
+            "wrap": true
+          },
+          "spacing": 8
         },
-
         "cssClassNamePrefix": null,
-
         "alwaysAllowBleed": false,
-
         "_legacyFontType": {
+          "fontFamily": "Segoe UI,Segoe,Segoe WP,Helvetica Neue,Helvetica,sans-serif",
+          "fontSizes": {
+            "small": 12,
+            "default": 30,
+            "medium": 17,
+            "large": 21,
+            "extraLarge": 26
+          },
+          "fontWeights": {
+            "lighter": 200,
+            "default": 400,
+            "bolder": 600
+          }
+        }
+      };
 
-               "fontFamily": "Segoe UI,Segoe,Segoe WP,Helvetica Neue,Helvetica,sans-serif",
-
-               "fontSizes": {
-
-                             "small": 12,
-
-                             "default": 30,
-
-                             "medium": 17,
-
-                             "large": 21,
-
-                             "extraLarge": 26
-
-               },
-
-               "fontWeights": {
-
-                             "lighter": 200,
-
-                             "default": 400,
-
-                             "bolder": 600
-
-               }
-
-}
-
-};
-
-    
-      const styleSet = window.WebChat.createStyleSet({
-        //Color
+     const styleSet = window.WebChat.createStyleSet({
         bubbleBackground: 'rgba(214, 214, 194, .9)',
         bubbleFromUserBackground: 'rgba(255, 146, 45, .8)',
-        // bubbleFromUserTextColor: 'white',
-        // bubbleTextColor: 'green',
 
-        //Avtar Image
         botAvatarImage: 'style/flex_person.jpg',
         botAvatarInitials: 'Mashreq',
         userAvatarImage: 'style/user.png',
         userAvatarInitials: 'User',
 
-        //Send Button
-        hideUploadButton: true,
+        hideUploadButton: false,
         backgroundColor:'Transparent',
         paddingRegular: 10,
-        // color:"rgba(214, 214, 194, 0.7)", 
-      
-
-        //Suggested actions
-        // suggestedActionTextColor: 'green',
-        // suggestedActionBorder: `solid 2px #009682`,
-        // suggestedActionHeight: 30,
-        
-        //send box
-        // sendBoxBackground:"orange",
-        // sendBoxPlaceholderColor: "red",
-        // sendBoxTextColor:"green",
-
-        //Carousel Card
-        // transcriptOverlayButtonColor: 'white',
-        // transcriptOverlayButtonBackground:'red',
-
-        // Other Setting
-        // paddingRegular: 10,  
-        // backgroundImage:'url(\'https://www.mashreqbank.com/uae/en/system/designitems/images/favicons/favicon-96x96.png\')',
-        // backgroundColor: 'transparent', 
-        // sendBoxHeight: 50,
-        // bubbleMinWidth: 400,
-        // bubbleMaxWidth: 700,
-        // microphoneButtonColorOnDictate: '#FF00FF',
-        // hideUploadButton: true 
-        
       });
 
-      // After generated, you can modify the CSS rules
       styleSet.textContent = { ...styleSet.textContent,
         fontFamily: '\'Century Gothic\', \'CenturyGothic\', sans-serif',
         fontWeight: '30px',
-      //   fontColor: "rgba(255,255,255,0.7)"
-      
-       
       };
     
+	    var speakingFlag = 0;
+      var speakingLanguage = 'en-US';
+
       //Put Directline Secret Key : bpWZ9vLd6O0.RqKVm_7_lNEjNo3N4nYvGhBe11nGoqsIoti4C-z9NgQ
-      // var dl=window.WebChat.createDirectLine({ secret: '66eF5U9B8Z0.BBUGJ3KAV0NhEgyF6h3UJTvN_4VmCs7WFhVRbAUS3XU' })
+      var dl = window.WebChat.createDirectLine({ secret: 'bpWZ9vLd6O0.RqKVm_7_lNEjNo3N4nYvGhBe11nGoqsIoti4C-z9NgQ' })
 
-      var dl=window.WebChat.createDirectLine({ secret: '-7YthhcswGY.J1t24hlsR4RL1RDFp3U1bDojrAswWDNo7hnVglxjveg' })
+      //render initial webchat
+      renderwebchat(adaptiveCardHostConfig, styleSet, speakingLanguage, dl);
 
-      var division = decodeURI(getParamValue("division"))
-      var departement = decodeURI(getParamValue("department"))
-      var uid = decodeURI(getParamValue("uid"))
-
-      var usedDepartement=" "
-      if(division.trim().length>0){
-        usedDepartement=division
-      }
-      else if(departement.trim().length>0){
-        usedDepartement=departement
-      }
-                  
-        window.WebChat.renderWebChat({
-    
-        // directLine: Object.assign({}, dl, {
-        //             postActivity: activity => {
-        //             var newActivity = Object.assign({}, activity, { channelData: { "username": decodeURI(getParamValue('name')),"divison":decodeURI(getParamValue('division')),"source":decodeURI(getParamValue('source')) } });
-        //             return dl.postActivity(newActivity);
-        //         }
-        //       }),
-        
-        adaptiveCardHostConfig,
-        directLine:dl,
-        // session Users
-        // username: sessionStorage.getItem("username"),        
-        // userID: sessionStorage.getItem("userID"),
-
-        // URL Username
-        username: decodeURI(getParamValue('name')),
-        // userID: { "division": decodeURI(getParamValue("division")),"source" : decodeURI(getParamValue("source"))},        
-        userID: usedDepartement+"||"+decodeURI(getParamValue("source"))+"||"+uid,
-        // role:decodeURI(getParamValue("source")),
-        
-        
-        
-        styleSet,
-        
-        
-      }, document.getElementById('webchat'));
       
       var activity = {
-                      from: {
-                        id: "dummy",
-                        name: "Name"
-                      },
-                      name: 'startConversation',
-                      type: 'event',
-                      value: '',
-                      channelData: {
-                        "personId": "UserId",
-                        "environment": window.location.host
-                        // "username": decodeURI(getParamValue('name')),
-                        // "divison":decodeURI(getParamValue('division')),
-                        // "source":decodeURI(getParamValue('source'))
-                        
-                      }
-                    };
+        from: {
+          id: "dummy",
+          name: "Name"
+        },
+        name: 'startConversation',
+        type: 'event',
+        value: '',
+        channelData: {
+          "personId": "UserId",
+          "environment": window.location.host                  
+        }
+      };
 
-    dl.postActivity(activity).subscribe(function(id) {
-      if (console) {
-        console.log('"trigger requestWelcomeDialog" sent');
+      dl.postActivity(activity).subscribe(function(id) {
+        if (console) {
+          console.log('"trigger requestWelcomeDialog" sent');
+        }
+
+        //I have called this inside postActivity.... need to look for better solution
+      });
+
+      dl.activity$.subscribe(function(activity){
+        if(activity['from']['id'] == "flex_qna_bot"){
+          if(activity['text'] == 'Your selected language is English'){
+            speakingLanguage = 'en-US';
+            renderwebchat(adaptiveCardHostConfig, styleSet, speakingLanguage, dl);
+          }
+          else if(activity['text'] == 'Your selected language is Arabic'){
+            speakingLanguage = 'ar-SA';
+            renderwebchat(adaptiveCardHostConfig, styleSet, speakingLanguage, dl);
+          }
+        }
+      });
+
+
+      function renderwebchat(adaptiveCardHostConfig, styleSet, speakingLanguage, dl){
+	      window.WebChat.renderWebChat({        
+	        adaptiveCardHostConfig,
+	        styleSet,        
+		    	locale : speakingLanguage,														//language for speech-to-text input          
+	        directLine : dl,
+	    	 	webSpeechPonyfillFactory: window.WebChat.createCognitiveServicesSpeechServicesPonyfillFactory({
+	    	    region: 'westus',
+	    	    subscriptionKey: '2a54f18e50414f1b9a7e89165dedac00'
+	     		}),
+	        }, 
+	        document.getElementById('webchat')
+	      );
       }
-    });
+
+      
     </script>
-    
-    <!-- <script>
-    console.log("User A Information")
-      console.log(document.getElementById('user-info'))
-      var it = new FormData( document.getElementById('user-info') ).entries();
-      var current = {};
-      while ( ! current.done ) {
-          current = it.next();
-          console.log("User Information")
-          console.log( current )
-      }
-    </script> -->
-
-  
-
-</body>
-
+  </body>
 </html>
